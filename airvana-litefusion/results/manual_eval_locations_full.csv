@@ -1,0 +1,5 @@
+name,image_path,city,haze_label,haze_conf,aqi,pm25,pm10,no2,so2,co,o3
+Delhi manual,data/images/manual_test/Delhi-Air-Pollution-1-1.jpg,Delhi,CLEAR,0.5051186084747314,161.0,161.0,120.0,35.3,10.3,3.3,45.1
+Mysore-1,data/images/manual_test/Mysore.png,Mysore,CLEAR,0.5051186084747314,,,,,,,
+Mysore-2,data/images/manual_test/Mysore-2.jpeg,Mysore,CLEAR,0.5051186084747314,,,,,,,
+Japan-night,data/images/manual_test/Japan-night.png,Tokyo,CLEAR,0.5051186084747314,70.0,70.0,23.0,40.8,1.5,11.2,1.6

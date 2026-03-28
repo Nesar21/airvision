@@ -1,0 +1,4 @@
+[image_only_test]
+MAE : 18.808
+RMSE: 27.773
+R2  : 0.747

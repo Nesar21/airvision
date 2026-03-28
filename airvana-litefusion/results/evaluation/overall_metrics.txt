@@ -1,0 +1,20 @@
+[image_only]
+MAE : 12.688
+RMSE: 17.253
+R2  : 0.921
+
+[numeric_only]
+MAE : 52.884
+RMSE: 61.323
+R2  : 0.000
+
+[news_only]
+MAE : 145.416
+RMSE: 157.817
+R2  : -5.623
+
+[fusion_full]
+MAE : 21.035
+RMSE: 25.570
+R2  : 0.826
+

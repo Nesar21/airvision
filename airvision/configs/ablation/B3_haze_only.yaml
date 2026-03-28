@@ -1,0 +1,40 @@
+# ================================================================
+# Phase-6 Ablation: B3 — Haze Only
+# Evaluates isolated effect of haze classification.
+# No Phase-2 embedding. No vis. No uncertainty.
+# 10-epoch diagnostic ablation.
+# ================================================================
+
+experiment_name: "B3_haze_only"
+
+# -------------------------
+# Model Configuration
+# -------------------------
+use_phase2_embedding: false      # no 524D engineered vector
+use_haze_head: true              # haze head ON
+use_vis_head: false              # visibility head OFF
+use_uncertainty: false           # logvar OFF
+
+# -------------------------
+# Training Configuration
+# -------------------------
+max_epochs: 10
+early_stop_patience: 3
+batch_size: 16
+learning_rate: 1e-4
+weight_decay: 1e-5
+
+# -------------------------
+# Data Configuration
+# -------------------------
+splits_dir: "splits"
+metadata_csv: "metadata_image_only.csv"
+
+phase2_embeddings_npy: "phase2_features_final_image_only.npy"
+phase2_index_csv: "phase2_index_image_only.csv"
+
+# -------------------------
+# Logging / Output
+# -------------------------
+save_dir: "results/ablation/B3_haze_only"
+manifest_path: "run_manifest.json"

@@ -1,0 +1,564 @@
+{
+  "runs": [
+    {
+      "run_id": "2b0db012-d20a-4abe-a833-b9736103914a",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase0_env",
+      "stage": "final_validation",
+      "description": "Environment fully validated.",
+      "timestamp": 1765001529.18558,
+      "config": {
+        "device": "mps"
+      },
+      "metrics": {
+        "status": "ok"
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "c003d2e2-2b73-45a7-afa1-bcefcdec84a4",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase1_preprocessing",
+      "stage": "full_pipeline_updated",
+      "description": "Phase 1 preprocessing updated for IND+NEP dataset schema.",
+      "timestamp": 1765006606.0667179,
+      "config": {
+        "device": "mps"
+      },
+      "metrics": {
+        "rows_final": 12240
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "70a753c2-f166-4204-8b05-0d9322cfb216",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase2_engineered_features",
+      "stage": "full_features_v1",
+      "description": "Phase 2 engineered features + Z-score computed.",
+      "timestamp": 1765028481.8585532,
+      "config": {
+        "device": "mps"
+      },
+      "metrics": {
+        "rows_image_only": 12240,
+        "rows_fusion": 12240,
+        "num_features_raw": 12
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "e9227688-0739-4e33-b3e4-3b92d1ebba90",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase2_embeddings",
+      "stage": "clip_vit",
+      "description": "CLIP/VIT embeddings generated.",
+      "timestamp": 1765028868.2042089,
+      "config": {
+        "model": "ViT-B/32"
+      },
+      "metrics": {
+        "image_only_rows": 12240,
+        "fusion_rows": 12240
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "b70bffac-c37a-4eb3-9b60-03287e92d85b",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase2_finalize",
+      "stage": "final_matrix",
+      "description": "Final engineered + CLIP feature matrices created.",
+      "timestamp": 1765029505.882998,
+      "config": {
+        "engineered_dim": 12
+      },
+      "metrics": {
+        "samples_image_only": 12240,
+        "samples_fusion": 12240
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "ef746a9a-ea32-435b-9244-f6731f87aa39",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase1_patch",
+      "stage": "metadata_augmented",
+      "description": "Patched metadata with image_id + country_group.",
+      "timestamp": 1765035750.946657,
+      "config": {
+        "added_columns": [
+          "image_id",
+          "country_group"
+        ]
+      },
+      "metrics": {
+        "rows": 12240
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "562362b0-8ef3-44d9-bd1d-a3951720ea3e",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase2_finalize",
+      "stage": "final_matrix",
+      "description": "Final engineered + CLIP feature matrices created.",
+      "timestamp": 1765035760.0260532,
+      "config": {
+        "engineered_dim": 12
+      },
+      "metrics": {
+        "samples_image_only": 12240,
+        "samples_fusion": 12240
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "b2c7ab8d-31d8-44ae-aa9e-9687b27b5085",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase3_split",
+      "stage": "cv_generation",
+      "description": "3-city holdout + 5-fold SGKF using *_x metadata columns",
+      "timestamp": 1765036550.212713,
+      "config": {
+        "holdout_cities": [
+          "Delhi",
+          "Mumbai",
+          "Kanpur"
+        ],
+        "n_splits": 5
+      },
+      "metrics": {
+        "holdout_rows": 2203,
+        "train_rows": 4339
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "1f0618ec-912f-4e72-b90c-b04ccfff36a3",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase5_stage1",
+      "stage": "haze_pretrain_pm25vision",
+      "description": "Stage 1 haze pretraining on PM25Vision",
+      "timestamp": 1765048088.39728,
+      "config": {
+        "batch_size": 16,
+        "epochs": 32,
+        "backbone_lr": 1e-05,
+        "head_lr": 0.001
+      },
+      "metrics": {
+        "best_val_loss": 1.4770663913412072,
+        "best_val_haze_acc": 0.36802464909277643
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "1f69cf1f-1d81-4ff9-a089-24c062940cfa",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase5_stage2",
+      "stage": "soft_aqi_pretrain",
+      "description": "Stage 2 normalized AQI heteroscedastic training",
+      "timestamp": 1765125789.261536,
+      "config": {
+        "batch_size": 16,
+        "lr": 1e-05
+      },
+      "metrics": {
+        "best_val_loss": -0.7974735625963103,
+        "best_val_mae": 0.08990752152162478
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "fdcf341d-3371-41e0-92a8-b68739b3a379",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase5_stage3",
+      "stage": "ind_nep_finetune_fold0",
+      "description": "Stage 3 IND_NEP fine-tuning with Phase-2 embeddings, heteroscedastic AQI + haze aux.",
+      "timestamp": 1765129652.642147,
+      "config": {
+        "fold": 0,
+        "batch_size": 16,
+        "max_epochs": 32,
+        "backbone_lr": 1e-05,
+        "head_lr": 0.001,
+        "lambda_aqi": 1.0,
+        "lambda_haze": 0.1
+      },
+      "metrics": {
+        "mae": 215.2253875732422,
+        "rmse": 274.4153747558594,
+        "r2": -12.066353797912598,
+        "within25": 0.0,
+        "within50": 0.0013837638376383763,
+        "bin_150_200": 84.31830596923828,
+        "bin_200_300": 146.75418090820312,
+        "bin_300_10000": 294.1811828613281,
+        "city_ITO": 215.2253996437326,
+        "loss": 604.865927796907
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "41fc02c3-48b1-458a-96c8-2b87b4c12579",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase5_stage3",
+      "stage": "ind_nep_finetune_fold0",
+      "description": "Stage 3 IND_NEP fine-tuning with Phase-2 embeddings, heteroscedastic AQI + haze aux.",
+      "timestamp": 1765186123.4375098,
+      "config": {
+        "fold": 0,
+        "batch_size": 16,
+        "max_epochs": 32,
+        "backbone_lr": 1e-05,
+        "head_lr": 0.001,
+        "lambda_aqi": 1.0,
+        "lambda_haze": 0.1
+      },
+      "metrics": {
+        "mae": 18.65251350402832,
+        "rmse": 25.986591339111328,
+        "r2": 0.9371931552886963,
+        "within25": 0.7422385620915033,
+        "within50": 0.9383169934640523,
+        "bin_0_50": 21.881881713867188,
+        "bin_50_100": 16.505239486694336,
+        "bin_100_150": 21.815767288208008,
+        "bin_150_200": 21.069534301757812,
+        "bin_200_300": 13.905241966247559,
+        "bin_300_10000": 14.119165420532227,
+        "city_Biratnagar": 12.823370185939744,
+        "city_Tamil Nadu": 28.62539563860212,
+        "city_Mumbai": 22.718319416046143,
+        "city_Knowledge park": 28.623616495440082,
+        "city_New Ind Town": 11.991060360457546,
+        "city_ITO": 13.791436950824552,
+        "city_Bengaluru": 13.552734858029849,
+        "city_Dimapur": 20.507177679879323,
+        "loss": -1.2839153907657448
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "18bba4b8-d64e-4537-832b-11286fd74cdd",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase5_stage3",
+      "stage": "ind_nep_finetune_fold1",
+      "description": "Stage 3 IND_NEP fine-tuning with Phase-2 embeddings, heteroscedastic AQI + haze aux.",
+      "timestamp": 1765192045.399714,
+      "config": {
+        "fold": 1,
+        "batch_size": 16,
+        "max_epochs": 32,
+        "backbone_lr": 1e-05,
+        "head_lr": 0.001,
+        "lambda_aqi": 1.0,
+        "lambda_haze": 0.1
+      },
+      "metrics": {
+        "mae": 18.55177879333496,
+        "rmse": 26.311386108398438,
+        "r2": 0.9346883893013,
+        "within25": 0.7724673202614379,
+        "within50": 0.934640522875817,
+        "bin_0_50": 22.103910446166992,
+        "bin_50_100": 15.51171875,
+        "bin_100_150": 21.684616088867188,
+        "bin_150_200": 18.45918083190918,
+        "bin_200_300": 16.737571716308594,
+        "bin_300_10000": 14.788641929626465,
+        "city_Biratnagar": 12.936047268353299,
+        "city_Tamil Nadu": 28.17613063230143,
+        "city_Mumbai": 20.699086381734904,
+        "city_Knowledge park": 28.09593745200865,
+        "city_New Ind Town": 12.80409860610962,
+        "city_ITO": 15.455596361292123,
+        "city_Bengaluru": 13.135561098371234,
+        "city_Dimapur": 23.1760797228132,
+        "loss": -1.2704301118071561
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "adfda6a5-a9bc-4e80-bed7-e58d8a590eca",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase5_stage3",
+      "stage": "ind_nep_finetune_fold2",
+      "description": "Stage 3 IND_NEP fine-tuning with Phase-2 embeddings, heteroscedastic AQI + haze aux.",
+      "timestamp": 1765198043.033035,
+      "config": {
+        "fold": 2,
+        "batch_size": 16,
+        "max_epochs": 32,
+        "backbone_lr": 1e-05,
+        "head_lr": 0.001,
+        "lambda_aqi": 1.0,
+        "lambda_haze": 0.1
+      },
+      "metrics": {
+        "mae": 19.48706817626953,
+        "rmse": 29.151147842407227,
+        "r2": 0.9188125133514404,
+        "within25": 0.7434640522875817,
+        "within50": 0.9256535947712419,
+        "bin_0_50": 26.659414291381836,
+        "bin_50_100": 16.0632266998291,
+        "bin_100_150": 23.151897430419922,
+        "bin_150_200": 18.72747039794922,
+        "bin_200_300": 16.056331634521484,
+        "bin_300_10000": 14.849661827087402,
+        "city_Biratnagar": 12.189530491279568,
+        "city_Tamil Nadu": 35.23787835356477,
+        "city_Mumbai": 19.34480841846423,
+        "city_Knowledge park": 30.617345163899085,
+        "city_New Ind Town": 14.700629711151123,
+        "city_ITO": 15.861499733639203,
+        "city_Bengaluru": 12.419838320744502,
+        "city_Dimapur": 26.992140415736607,
+        "loss": -1.2566891647631826
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "11d5d275-1680-42fa-9876-88d1df1cdad5",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase5_stage3",
+      "stage": "ind_nep_finetune_fold3",
+      "description": "Stage 3 IND_NEP fine-tuning with Phase-2 embeddings, heteroscedastic AQI + haze aux.",
+      "timestamp": 1765203827.68538,
+      "config": {
+        "fold": 3,
+        "batch_size": 16,
+        "max_epochs": 32,
+        "backbone_lr": 1e-05,
+        "head_lr": 0.001,
+        "lambda_aqi": 1.0,
+        "lambda_haze": 0.1
+      },
+      "metrics": {
+        "mae": 19.216651916503906,
+        "rmse": 26.361318588256836,
+        "r2": 0.9340817928314209,
+        "within25": 0.7299836601307189,
+        "within50": 0.9313725490196079,
+        "bin_0_50": 19.85566520690918,
+        "bin_50_100": 16.002988815307617,
+        "bin_100_150": 23.460107803344727,
+        "bin_150_200": 21.173351287841797,
+        "bin_200_300": 16.152141571044922,
+        "bin_300_10000": 14.756465911865234,
+        "city_Biratnagar": 13.539412538027435,
+        "city_Tamil Nadu": 27.063492867853736,
+        "city_Mumbai": 23.110292339541203,
+        "city_Knowledge park": 28.857966053870417,
+        "city_New Ind Town": 12.476744174957275,
+        "city_ITO": 14.887327062369492,
+        "city_Bengaluru": 14.179957360106629,
+        "city_Dimapur": 28.06975304739816,
+        "loss": -1.2464611452389387
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "57af2dc6-a4ac-4769-b8e1-cbb969b186a3",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase5_stage3",
+      "stage": "ind_nep_finetune_fold4",
+      "description": "Stage 3 IND_NEP fine-tuning with Phase-2 embeddings, heteroscedastic AQI + haze aux.",
+      "timestamp": 1765209743.800552,
+      "config": {
+        "fold": 4,
+        "batch_size": 16,
+        "max_epochs": 32,
+        "backbone_lr": 1e-05,
+        "head_lr": 0.001,
+        "lambda_aqi": 1.0,
+        "lambda_haze": 0.1
+      },
+      "metrics": {
+        "mae": 19.651674270629883,
+        "rmse": 27.290939331054688,
+        "r2": 0.9290131330490112,
+        "within25": 0.7254901960784313,
+        "within50": 0.9252450980392157,
+        "bin_0_50": 20.897174835205078,
+        "bin_50_100": 18.612937927246094,
+        "bin_100_150": 22.58945083618164,
+        "bin_150_200": 22.008222579956055,
+        "bin_200_300": 17.236717224121094,
+        "bin_300_10000": 13.035089492797852,
+        "city_Biratnagar": 14.908165646038846,
+        "city_Tamil Nadu": 30.553054543284627,
+        "city_Mumbai": 22.053926983746614,
+        "city_Knowledge park": 26.937138048041778,
+        "city_New Ind Town": 12.00221061706543,
+        "city_ITO": 13.320781328936922,
+        "city_Bengaluru": 17.075399323448615,
+        "city_Dimapur": 27.435029929024832,
+        "loss": -1.1519504867348016
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "6ce833c3-01b0-45a9-bcce-92a39de81c80",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase6_ablation",
+      "stage": "ablation_fold0",
+      "description": "Phase-6 ablation (Fold-0, 10 epochs, component toggles only).",
+      "timestamp": 1765620030.640085,
+      "config": {
+        "fold": 0,
+        "epoch_cap": 10,
+        "batch_size": 16,
+        "backbone_lr": 1e-05,
+        "head_lr": 0.001,
+        "lambda_aqi": 1.0,
+        "lambda_haze": 0.1
+      },
+      "metrics": {
+        "mae": 73.82408142089844,
+        "rmse": 180.84576416015625,
+        "r2": -2.041762113571167,
+        "within25": 0.31495098039215685,
+        "within50": 0.5306372549019608,
+        "bin_0_50": 89.73542785644531,
+        "bin_50_100": 61.840675354003906,
+        "bin_100_150": 87.93057250976562,
+        "bin_150_200": 98.02395629882812,
+        "bin_200_300": 43.706424713134766,
+        "bin_300_10000": 43.858150482177734,
+        "city_Biratnagar": 52.318882944392065,
+        "city_Tamil Nadu": 81.52628597655854,
+        "city_Mumbai": 139.13565595800227,
+        "city_Knowledge park": 62.08815710006222,
+        "city_New Ind Town": 51.30957445248153,
+        "city_ITO": 52.900099368899305,
+        "city_Bengaluru": 46.38139759905926,
+        "city_Dimapur": 126.47804303850447,
+        "loss": 0.032705189376762075
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "2f258060-6ab9-4638-b412-ccf7f0cda1ba",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase6_ablation",
+      "stage": "ablation_fold0",
+      "description": "Phase-6 ablation (Fold-0, 10 epochs, component toggles only).",
+      "timestamp": 1765621881.985682,
+      "config": {
+        "fold": 0,
+        "epoch_cap": 10,
+        "batch_size": 16,
+        "backbone_lr": 1e-05,
+        "head_lr": 0.001,
+        "lambda_aqi": 1.0,
+        "lambda_haze": 0.1
+      },
+      "metrics": {
+        "mae": 53.03293991088867,
+        "rmse": 128.38877868652344,
+        "r2": -0.5330724716186523,
+        "within25": 0.4227941176470588,
+        "within50": 0.6809640522875817,
+        "bin_0_50": 60.72944259643555,
+        "bin_50_100": 45.29092788696289,
+        "bin_100_150": 60.95533752441406,
+        "bin_150_200": 67.28890228271484,
+        "bin_200_300": 36.00849151611328,
+        "bin_300_10000": 37.57847595214844,
+        "city_Biratnagar": 30.961504846331717,
+        "city_Tamil Nadu": 65.7997564092859,
+        "city_Mumbai": 81.53738553307274,
+        "city_Knowledge park": 56.53722726145098,
+        "city_New Ind Town": 40.36978303184805,
+        "city_ITO": 41.43063742128861,
+        "city_Bengaluru": 50.18361760919744,
+        "city_Dimapur": 53.20733658926827,
+        "loss": 0.016483678379658383
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "94ac4b3b-f2d1-4677-a268-2aa93db64d99",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase6_ablation",
+      "stage": "ablation_fold0",
+      "description": "Phase-6 ablation (Fold-0, 10 epochs, component toggles only).",
+      "timestamp": 1765624399.3241138,
+      "config": {
+        "fold": 0,
+        "epoch_cap": 10,
+        "batch_size": 16,
+        "backbone_lr": 1e-05,
+        "head_lr": 0.001,
+        "lambda_aqi": 1.0,
+        "lambda_haze": 0.1
+      },
+      "metrics": {
+        "mae": 50.07362747192383,
+        "rmse": 103.0293197631836,
+        "r2": 0.012742996215820312,
+        "within25": 0.4293300653594771,
+        "within50": 0.6723856209150327,
+        "bin_0_50": 46.475425720214844,
+        "bin_50_100": 33.515357971191406,
+        "bin_100_150": 62.549442291259766,
+        "bin_150_200": 65.24626922607422,
+        "bin_200_300": 39.431907653808594,
+        "bin_300_10000": 35.857975006103516,
+        "city_Biratnagar": 29.378108881807876,
+        "city_Tamil Nadu": 57.880916793625076,
+        "city_Mumbai": 76.10927461277355,
+        "city_Knowledge park": 60.241569457515595,
+        "city_New Ind Town": 45.562166494916575,
+        "city_ITO": 42.360955764735266,
+        "city_Bengaluru": 38.56373775531719,
+        "city_Dimapur": 63.98004749843052,
+        "loss": 0.025926573453676504
+      },
+      "notes": ""
+    },
+    {
+      "run_id": "60706e60-a121-4e29-8012-c15479fbd894",
+      "family": "AQI_MASTER_V2_5",
+      "phase": "phase6_ablation",
+      "stage": "ablation_fold0",
+      "description": "Phase-6 ablation (Fold-0, 10 epochs, component toggles only).",
+      "timestamp": 1765626223.103029,
+      "config": {
+        "fold": 0,
+        "epoch_cap": 10,
+        "batch_size": 16,
+        "backbone_lr": 1e-05,
+        "head_lr": 0.001,
+        "lambda_aqi": 1.0,
+        "lambda_haze": 0.1
+      },
+      "metrics": {
+        "mae": 59.66147232055664,
+        "rmse": 132.09027099609375,
+        "r2": -0.6227447986602783,
+        "within25": 0.39052287581699346,
+        "within50": 0.6331699346405228,
+        "bin_0_50": 74.5712890625,
+        "bin_50_100": 47.29277801513672,
+        "bin_100_150": 76.0727767944336,
+        "bin_150_200": 78.20065307617188,
+        "bin_200_300": 29.576982498168945,
+        "bin_300_10000": 36.82801055908203,
+        "city_Biratnagar": 36.93655655082615,
+        "city_Tamil Nadu": 65.70090087048419,
+        "city_Mumbai": 103.55933146910233,
+        "city_Knowledge park": 63.772080513738814,
+        "city_New Ind Town": 29.90615761926932,
+        "city_ITO": 39.98463254932994,
+        "city_Bengaluru": 48.01072591310972,
+        "city_Dimapur": 124.44354803902762,
+        "loss": 265.68358470136724
+      },
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+feature,importance
+pm25_fetch,0.0
+pm10_fetch,0.0
+temp_fetch,0.0
+humidity_fetch,0.0
+pressure_fetch,0.0
+visibility_fetch,0.0
+wind_fetch,0.0
+wind_deg_fetch,0.0
+feels_like_fetch,0.0
+dew_point_fetch,0.0
+sat_brightness,0.0
+sat_blur,0.0
+sat_color_skew,0.0

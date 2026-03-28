@@ -1,0 +1,32 @@
+# ==========================================================
+# Phase-6 Ablation: B1 — Haze + Uncertainty (No Phase-2)
+# Tests stabilizing effect of haze classification + logvar.
+# ==========================================================
+
+experiment_name: "B1_haze_unc"
+
+# -------------------------
+# Model configuration
+# -------------------------
+use_phase2_embedding: false      # <— NO 524D engineered input
+use_haze_head: true              # haze classification head ON
+use_vis_head: false              # visibility OFF
+use_uncertainty: true            # heteroscedastic logvar ON
+
+# -------------------------
+# Training configuration
+# -------------------------
+max_epochs: 10
+early_stop_patience: 3
+batch_size: 16
+learning_rate: 1e-4
+weight_decay: 1e-5
+
+# -------------------------
+# Data configuration
+# -------------------------
+splits_dir: "splits"
+metadata_csv: "metadata_image_only.csv"
+
+phase2_embeddings_npy: "phase2_features_final_image_only.npy"
+phase2_index_csv: "phase2_index_image

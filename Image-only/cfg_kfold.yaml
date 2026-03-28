@@ -1,0 +1,24 @@
+# cfg_kfold.yaml
+# 4-fold training config for LiteFusion on MPS
+
+project_root: "."
+master_csv: "data/master_v2.csv"
+splits_dir: "splits"
+
+device: "mps"   # auto-selected by trainer as well
+img_size: 256
+batch_size: 32
+epochs: 50
+
+lr: 0.0001
+weight_decay: 0.01
+
+backbone: "mobilenetv3_large_100"
+pretrained: true
+
+w_aqi: 1.0
+w_pm25: 0.7
+w_pm10: 0.7
+
+save_dir: "outputs/kfold"   # each fold saved as outputs/kfold/fold0, fold1, ...
+num_workers: 4

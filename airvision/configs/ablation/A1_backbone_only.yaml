@@ -1,0 +1,37 @@
+# ================================================
+# Phase-6 Ablation: A1 — Backbone Only
+# No Phase-2 embedding, No aux heads, 10 epochs.
+# ================================================
+
+experiment_name: "A1_backbone_only"
+
+# -------------------------
+# Model configuration
+# -------------------------
+use_phase2_embedding: false
+use_haze_head: false
+use_vis_head: false
+use_uncertainty: false
+
+# -------------------------
+# Training configuration
+# -------------------------
+max_epochs: 10
+early_stop_patience: 3
+batch_size: 16
+learning_rate: 1e-4
+weight_decay: 1e-5
+
+# -------------------------
+# Data configuration
+# -------------------------
+splits_dir: "splits"
+metadata_csv: "metadata_image_only.csv"
+phase2_embeddings_npy: "phase2_features_final_image_only.npy"
+phase2_index_csv: "phase2_index_image_only.csv"
+
+# -------------------------
+# Logging / Output
+# -------------------------
+save_dir: "results/ablation/A1_backbone_only"
+manifest_path: "run_manifest.json"

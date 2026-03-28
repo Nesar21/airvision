@@ -1,0 +1,78 @@
+================================================================================
+IEEE ACCESS REPRODUCIBILITY ARTIFACT GENERATION
+Execution Time: 2026-01-04 22:52 IST
+================================================================================
+
+✓ Found results: outputs/kfold_dayonly/results_all_folds.json
+✓ Found test set: splits/test.csv (20 samples)
+
+CATEGORY 1: PER-SAMPLE PREDICTIONS
+--------------------------------------------------------------------------------
+✗ MISSING: predictions_test.csv for fold0
+✗ MISSING: predictions_test.csv for fold1
+✗ MISSING: predictions_test.csv for fold2
+✗ MISSING: predictions_test.csv for fold3
+
+STATUS: ❌ NO PREDICTIONS FOUND - CANNOT GENERATE SCATTER PLOTS
+ACTION: Rerun inference with saved predictions enabled
+
+CATEGORY 2: METRICS COMPLETENESS
+--------------------------------------------------------------------------------
+✓ Saved: results_ieee_access/metrics_completeness_audit.csv
+
+IEEE BLOCKERS - MISSING METRICS:
+  ❌ PM2.5 RMSE (all 4 folds)
+  ❌ PM2.5 R² (all 4 folds)
+  ❌ PM10 RMSE (all 4 folds)
+  ❌ PM10 R² (all 4 folds)
+
+CATEGORY 3: OOD STRATIFICATION (DAY vs NIGHT)
+--------------------------------------------------------------------------------
+❌ Cannot stratify - test.csv not available or missing daynight column
+
+CATEGORY 4: VISUAL EVIDENCE
+--------------------------------------------------------------------------------
+STATUS: ❌ NO PREDICTIONS - CANNOT GENERATE FIGURES
+✓ Generated placeholder: results_ieee_access/placeholder_scatter_plots_IEEE_BLOCKER.png
+
+CATEGORY 5: TRAINING CURVES
+--------------------------------------------------------------------------------
+✓ Found: outputs/kfold_dayonly/fold0/training_log.csv
+✓ Found: outputs/kfold_dayonly/fold1/training_log.csv
+✓ Found: outputs/kfold_dayonly/fold2/training_log.csv
+✓ Found: outputs/kfold_dayonly/fold3/training_log.csv
+
+CATEGORY 6: CHECKPOINT AUDIT
+--------------------------------------------------------------------------------
+✓ Saved: results_ieee_access/checkpoint_audit.csv
+
+
+FINAL VERDICT
+================================================================================
+IEEE ACCESS READINESS: ❌ NO
+
+CRITICAL BLOCKERS IDENTIFIED: 4
+  1. Per-sample predictions NOT saved
+  2. PM2.5/PM10 missing RMSE and R² metrics
+  3. Day vs Night metrics NOT separated
+  4. Visual evidence (scatter plots) NOT generated
+
+IMMEDIATE ACTIONS REQUIRED (ESTIMATED: 2-4 HOURS):
+  1. Locate or regenerate results_all_folds.json
+  2. Run inference on test set → save predictions_test.csv
+  3. Compute missing PM2.5/PM10 RMSE and R² from predictions
+  4. Stratify all metrics by daynight column
+  5. Generate scatter plots (AQI, PM2.5, PM10)
+  6. Generate residual histograms
+
+ARTIFACTS GENERATED IN THIS RUN:
+  - metrics_completeness_audit.csv
+  - checkpoint_audit.csv
+  - ieee_access_audit_report.txt
+  - placeholder_scatter_plots_IEEE_BLOCKER.png
+
+Total artifacts: 4
+
+================================================================================
+AUDIT COMPLETE
+================================================================================

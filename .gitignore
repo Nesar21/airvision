@@ -1,0 +1,52 @@
+# DATASETS - ALL IMAGES
+**/*kaggle*/
+**/*pm25vision*/
+**/images/
+**/Images/
+**/*TRAQID*/
+blur/
+clear_fog/
+day_night_images/
+Exposure_Errors_Dataset/
+Multi-class Weather Dataset/
+
+
+# MODEL WEIGHTS
+*.h5
+*.weights.h5
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.hdf5
+*.zip
+
+
+# VENV
+venv/
+.venv/
+venv_*/
+env/
+
+
+# PYTHON
+__pycache__/
+*.pyc
+
+
+# SYSTEM
+.DS_Store
+
+
+# PROJECTS TO IGNORE
+web_weaver/
+Marathon_agent/
+
+
+# EMBEDDINGS
+*.npy
+
+
+# LOGS
+*.log
+V1/negative_examples/

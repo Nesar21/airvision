@@ -1,0 +1,90 @@
+================================================================================
+IEEE ACCESS MODEL-3 SUBMISSION READINESS REPORT
+================================================================================
+
+EXPERIMENT: 4-Fold Cross-Validation (LiteFusion Model)
+DATASET: TRAQID (Day/Night split)
+
+CROSS-VALIDATION METRICS
+--------------------------------------------------------------------------------
+Metric                Fold 0       Fold 1       Fold 2       Fold 3      Average
+--------------------------------------------------------------------------------
+AQI MAE               130.33        27.50       129.89         9.72        74.36
+AQI RMSE              158.92        56.40       158.51        31.15       101.24
+AQI R²                -1.950        0.628       -1.940        0.887       -0.594
+
+PM2.5 MAE              99.47        40.64        99.40        15.68        63.80
+PM2.5 RMSE      NOT COMPUTED NOT COMPUTED NOT COMPUTED NOT COMPUTED    ❌ MISSING
+PM2.5 R²        NOT COMPUTED NOT COMPUTED NOT COMPUTED NOT COMPUTED    ❌ MISSING
+
+PM10 MAE              107.85        33.73       109.50        19.45        67.63
+PM10 RMSE       NOT COMPUTED NOT COMPUTED NOT COMPUTED NOT COMPUTED    ❌ MISSING
+PM10 R²         NOT COMPUTED NOT COMPUTED NOT COMPUTED NOT COMPUTED    ❌ MISSING
+--------------------------------------------------------------------------------
+
+IEEE CATEGORY 1 BLOCKERS (CRITICAL)
+--------------------------------------------------------------------------------
+❌ 1. Per-Sample Predictions - NOT SAVED
+     Required: predictions_test.csv with columns:
+       - image_path, AQI_true, AQI_pred, PM25_true, PM25_pred,
+         PM10_true, PM10_pred, daynight
+
+❌ 2. Missing Metrics for PM2.5 and PM10
+     Required: RMSE and R² for both PM2.5 and PM10
+     Status: Only MAE reported
+
+❌ 3. OOD Analysis Not Stratified
+     Required: Separate metrics for Day vs Night
+     Current: Aggregated only (10 Day, 10 Night)
+
+❌ 4. Visual Evidence Missing
+     Required Figures:
+       - Predicted vs True scatter (AQI, PM2.5, PM10)
+       - Residual histograms
+       - Day vs Night error comparison
+
+OOD GROUND TRUTH STATISTICS
+--------------------------------------------------------------------------------
+Day Samples: 10
+  AQI:   70.59 ± 14.35
+  PM2.5: 42.35 ± 8.61
+  PM10:  55.25 ± 6.88
+
+Night Samples (OOD): 10
+  AQI:   78.77 ± 4.48
+  PM2.5: 47.26 ± 2.69
+  PM10:  64.43 ± 7.37
+
+GENERATED ARTIFACTS
+--------------------------------------------------------------------------------
+  ✓ checkpoint_audit.csv                               (     0.1 KB)
+  ✓ complete_metrics_table.csv                         (     0.3 KB)
+  ✓ complete_metrics_table_IEEE_REQUIRED.csv           (     0.4 KB)
+  ✓ day_night_boxplots_IEEE_FIGURE.png                 (   142.1 KB)
+  ✓ day_night_ground_truth_statistics_IEEE_TABLE.csv   (     0.4 KB)
+  ✓ ieee_access_audit_report.txt                       (     3.0 KB)
+  ✓ mae_comparison_all_targets.png                     (   132.7 KB)
+  ✓ mae_comparison_all_targets_IEEE_FIGURE.png         (   142.2 KB)
+  ✓ metrics_bar_charts_4fold.png                       (   228.4 KB)
+  ✓ metrics_bar_charts_4fold_IEEE_FIGURE.png           (   257.0 KB)
+  ✓ metrics_completeness_audit.csv                     (     0.6 KB)
+  ✓ placeholder_scatter_plots_IEEE_BLOCKER.png         (   170.4 KB)
+  ✓ scatter_plots_IEEE_MANDATORY_BLOCKER.png           (   448.0 KB)
+
+IMMEDIATE ACTION REQUIRED
+--------------------------------------------------------------------------------
+1. Rerun inference with --save_predictions flag
+2. Compute PM2.5/PM10 RMSE and R² from saved predictions
+3. Generate scatter plots from raw predictions
+4. Stratify all metrics by Day/Night condition
+5. Add residual analysis and per-bin error plots
+
+DOES THIS REQUIRE RETRAINING?
+--------------------------------------------------------------------------------
+❌ NO - If checkpoints exist (best.pth, swa.pth)
+   → Just rerun inference and save predictions
+✅ YES - If checkpoints are lost
+   → Must retrain all 4 folds (estimated 2-3 days)
+
+FINAL IEEE VERDICT: ❌ NOT READY FOR SUBMISSION
+================================================================================

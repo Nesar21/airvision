@@ -1,0 +1,1 @@
+Location,Filename,Year,Month,Day,Hour,AQI,pm25,pm10,O3,CO,SO2,NO2,AQI_Class,image_path,datetime_image,datetime_aqi,uses_hourly_measure,conf_twilight,sub_pm25,sub_pm10,dominant,is_pm_dominant

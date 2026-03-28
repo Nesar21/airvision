@@ -1,0 +1,6 @@
+MAE_mean: 52.8857
+MAE_std: 0.6047
+RMSE_mean: 61.3221
+RMSE_std: 0.5349
+R2_mean: -0.0001
+R2_std: 0.0001

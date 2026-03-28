@@ -1,0 +1,5 @@
+AQI_Bin,Sample_Count,MAE,RMSE,R2
+Good (50),135,21.87,25.88,N/A
+Moderate (100),188,11.34,15.66,N/A
+Unhealthy SG (150),29,23.81,29.14,N/A
+Unhealthy (200),104,14.76,21.11,N/A

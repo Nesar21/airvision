@@ -1,0 +1,21 @@
+{
+  "project_root": ".",
+  "master_csv": "data/master_v2.csv",
+  "splits_dir": "splits",
+  "train_csv": "splits/train.csv",
+  "val_csv": "splits/val.csv",
+  "test_csv": "splits/test.csv",
+  "img_size": 256,
+  "batch_size": 16,
+  "epochs": 30,
+  "lr": 0.0001,
+  "weight_decay": 0.01,
+  "device": "cpu",
+  "num_workers": 4,
+  "save_dir": "outputs",
+  "backbone": "mobilenetv3_large_100",
+  "pretrained": true,
+  "w_aqi": 1.0,
+  "w_pm25": 0.7,
+  "w_pm10": 0.7
+}

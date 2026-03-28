@@ -1,0 +1,50 @@
+═══════════════════════════════════════════════════════════════════
+IEEE ACCESS AUDIT REPORT: IMAGE-ONLY MODEL (MobileNetV3-Small)
+Test Set: SAPID (Smartphone-Based Air Pollution Image Dataset)
+Out-of-Distribution Evaluation
+═══════════════════════════════════════════════════════════════════
+
+OVERALL METRICS (n=456 samples):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  MAE  (Mean Absolute Error)     : 16.03 AQI units
+  RMSE (Root Mean Squared Error) : 21.33 AQI units
+  R²   (Coefficient of Det.)     : 0.851
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RESIDUAL STATISTICS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Mean Residual                  : -1.61
+  Std Dev of Residuals           : 21.27
+  Min Residual                   : -70.36
+  Max Residual                   : 55.35
+  Median Residual                : 0.46
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AQI BIN-WISE ERROR ANALYSIS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           AQI_Bin  Sample_Count   MAE  RMSE  R2
+         Good (50)           135 21.87 25.88 N/A
+    Moderate (100)           188 11.34 15.66 N/A
+Unhealthy SG (150)            29 23.81 29.14 N/A
+   Unhealthy (200)           104 14.76 21.11 N/A
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CLAIM DOWNGRADE (IEEE REQUIREMENT):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️  We do NOT claim universal AQI inference.
+
+This model was:
+  - Trained on satellite/ground-based imagery (Air Pollution Dataset)
+  - Tested on smartphone-captured images (SAPID - OOD evaluation)
+  - Limited to visible-spectrum RGB images (128x128 pixels)
+  - Optimized for Indian subcontinental atmospheric conditions
+
+Generalization claims are RESTRICTED to:
+  ✓ Smartphone image modality (as evidenced by SAPID test)
+  ✓ AQI range 50-200 (Good to Unhealthy categories)
+  ✗ NOT validated on: Night imagery, extreme AQI (>200), 
+    non-urban scenes, or geographies outside South Asia
+
+═══════════════════════════════════════════════════════════════════
+Generated: 2026-01-04 20:36:09
+═══════════════════════════════════════════════════════════════════

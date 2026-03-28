@@ -1,0 +1,52 @@
+project_root: "."
+master_csv: "data/master_v3_day_only.csv"
+splits_dir: "splits_dayonly"
+
+# device: choose "mps" or "cuda" or "cpu" — if omitted, auto-selects
+device: "mps"
+
+img_size: 256
+batch_size: 16
+epochs: 25
+
+lr: 0.0001
+weight_decay: 0.01
+
+# optimizer: "adamw" or "sgd"
+optimizer: "adamw"
+momentum: 0.9
+
+# scheduler: "cosine", "onecycle", "steplr"
+scheduler: "cosine"
+
+# training utilities
+num_workers: 4
+pin_memory: false
+grad_accum_steps: 1
+grad_clip: 1.0
+
+# early stopping
+min_epochs: 8
+patience: 6
+
+# AMP (mixed precision) - only enabled on CUDA
+amp: false
+
+# EMA
+use_ema: true
+ema_decay: 0.999
+
+# SWA (optional)
+use_swa: false
+swa_start: 18
+
+# Other loss weights (passed to masked loss)
+w_aqi: 1.0
+w_pm25: 0.7
+w_pm10: 0.7
+
+backbone: "mobilenetv3_large_100"
+pretrained: true
+
+save_dir: "outputs/kfold_dayonly"
+seed: 42

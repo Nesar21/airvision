@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# Checkpoints & large binaries
+checkpoints/
+*.pth
+*.npy
+
+# Data
+kaggle/
+pm25vision/
+features_*.csv
+metadata_*.csv
+phase2_features_final_*.npy
+phase2_index_*.csv
+
+# Results
+results/
+
+# MacOS junk
+.DS_Store
